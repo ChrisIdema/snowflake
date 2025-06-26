@@ -5,43 +5,34 @@ plate snow flake generation using ascii art for stackoverflow challange
 https://stackoverflow.com/beta/challenges/79669436/code-challenge-3-creating-ascii-art-snowflakes
 
 
-```
-Your submission should include:
-- An explanation of your snowflake creation approach
-- The code you have written to create the snowflake(s)
-- An example of some snowflakes that your code has created!
-- AI usage disclosure
-- Instructions for how others can run your code to observe how it works
-- Anything you learned or any interesting challenges you faced while coding!
-```
+# Explanation
 
-# explanation
+Parameters for 1 segment are generated, the other 5 segments are copies that are rotated by 60 degree increments. The reason is that real snow flakes have nearly identical segments since they all form under the same conditions (temperature, pressure, humidity, airflow, etc.).
 
-1 branch is generated, the other 5 branches are copies that are rotated by 60 degree increments. The reason is that real snow flakes have nearly identical segments since they all form under the same conditions (temperature, pressure, humidity, airflow, etc.).
+1 branch is max 60 degrees wide, so 30 degrees on each side.
 
-1 branch is max 60 degrees wide, so 30 degrees on each side
+A rectangular grid is used, both height and with are odd length so that there is an exact center.
 
-a rectangular grid is used, both height and with are odd length so that there is an exact center
+The height in rows is lower than the width in columns since the character grid is not square. This is adjusted using font_height_to_width.
 
-the height in rows is lower than the width in columns since the character grid is not square. This is adjusted using `font_height_to_width`.
+The center is marked with a ~
 
-The center is marked with a `~`
+Coordinates are normalized to [-1,1].
 
-coordinates are normalized to `[-1,1]`
-position and lengths of children are relative to parent, 
-length can never exceed length half of parent
-width can never exceed double the with of the parent
-minimum 1 and maximum 3 levels are used (including root) to simplify structure and stack usage
+Position and lengths of children are relative to parent. Length can never exceed length half of parent. Width can never exceed double the width of the parent. Minimum 1 and maximum 3 levels are used (including root) to simplify structure.
 
-crystal growth is not simulated, instead a tree with branch positions and dimensions is constructed using random parameters
-this tree is symmetrical and 6 identical copies are used to render the snowflake
+Crystal growth is not simulated, instead a tree with branch positions and dimensions is constructed using random parameters this tree is symmetrical and 6 identical copies are used to render the snowflake
+
+Segments can stick through their parent segments, I haven't made a restriction for that. Should not be hard to do.
+
+I used different ASCII characters for different growth directions.
 
 
-# code
+# Code
 
 Code is written in python with standard python libraries.
 
-# example outputs
+# Example outputs
 
 ```
                                       |||
@@ -113,11 +104,12 @@ Code is written in python with standard python libraries.
 # AI usage disclosure
 No AI was used in code generation or assistance with writing code.
 
-# instructions
+# Instructions
 
 ```
 python snowflake.py
 ```
+Or test it out here: https://www.programiz.com/online-compiler/18t8SQgYJDB64
 
 # Lessons learned
 
