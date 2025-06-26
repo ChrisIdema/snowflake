@@ -10,7 +10,7 @@ max_length_sq = (grid_width//2)**2
 # symmetrical tree
 root = {"connection": 0,                
         "l" : 0.75,
-        "w": 0.05,
+        "w": 0.1,
         "angle":0,
         "children":[]        
         }
@@ -18,22 +18,32 @@ root = {"connection": 0,
 root["children"].append(
 {"connection":0.5,
 "l" : 1,
-"w": 2,
+"w": 1,
 "angle":30,
 "children":[]
 }
 )
 
-root["children"][0]["children"].append(
+root["children"].append(
 {"connection":0.5,
-"l" : 0.25,
+"l" : 1,
 "w": 1,
 "angle":-30,
 "children":[]
 }
 )
 
+
 # root["children"][0]["children"].append(
+# {"connection":0.5,
+# "l" : 0.25,
+# "w": 1,
+# "angle":-30,
+# "children":[]
+# }
+# )
+
+# # root["children"][0]["children"].append(
 # {"connection":0.5,
 # "l" : 0.5,
 # "w": 2,
@@ -52,18 +62,20 @@ root["children"][0]["children"].append(
 # )
 
 def get_nodes(root, nodes=[],l=1,w=1, angle=0, origin=[0,0]):
-    nodes.append(root.copy())
-    nodes[-1]["children"] = []
-    nodes[-1]["l"] *= l
-    nodes[-1]["w"] *= w
-    nodes[-1]["angle"] += angle
+    node = root.copy()
+    node["children"] = []
+    node["l"] *= l
+    node["w"] *= w
+    node["angle"] += angle
 
-    x = origin[0] + sin(radians(angle)) * nodes[-1]["connection"] * l
-    y = origin[1] - cos(radians(angle)) * nodes[-1]["connection"] * l
-    nodes[-1]["origin"] = [x, y]
+    nodes.append(node)
+
+    x = origin[0] + sin(radians(angle)) * node["connection"] * l
+    y = origin[1] - cos(radians(angle)) * node["connection"] * l
+    node["origin"] = [x, y]
     
     for child in root["children"]:
-        get_nodes(child,nodes, nodes[-1]["l"], nodes[-1]["w"], nodes[-1]["angle"], nodes[-1]["origin"])
+        get_nodes(child,nodes, node["l"], node["w"], node["angle"], node["origin"])
 
     return nodes
 nodes = get_nodes(root)
