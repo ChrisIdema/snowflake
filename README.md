@@ -43,7 +43,6 @@ Code is written in python with standard python libraries.
 
 # example outputs
 
-with fixes:
 ```
                                       |||
                                       |||
