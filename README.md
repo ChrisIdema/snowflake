@@ -32,6 +32,7 @@ coordinates are normalized to `[-1,1]`
 position and lengths of children are relative to parent, 
 length can never exceed length half of parent
 width can never exceed double the with of the parent
+minimum 1 and maximum 3 levels are used (including root) to simplify structure and stack usage
 
 crystal growth is not simulated, instead a tree with branch positions and dimensions is constructed using random parameters
 this tree is symmetrical and 6 identical copies are used to render the snowflake
