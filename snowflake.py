@@ -109,8 +109,10 @@ for y in range(grid_height):
         else:
             segment_index = int(((angle_degrees + 30 + 360) %360)//60)
             octant_index = round(((angle_degrees + 360) %360)/45)%8
-            octant_array = "H/=\\N/=\\"
-            octant_char = octant_array[octant_index]
+            octant_array = "|/=\\|/=\\"
+            octant_char = octant_array[octant_index] 
+
+            hex_array = "|//z=\\\\N|/7z=\\\\N"
 
             if segment_index == 0:
                 for node in nodes:
@@ -125,9 +127,14 @@ for y in range(grid_height):
                     dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
                     in_node = is_in_node(node,[dx2,dy2])
                     if in_node:
-                        octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
-                        octant_char = octant_array[octant_index]
-                        line[x] = octant_char
+                        # octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
+                        # octant_char = octant_array[octant_index]                        
+                        # line[x] = octant_char
+
+                        hex_index = round(((node["angle"]+segment_index*60 + 360) %360)/22.5)%16
+                        hex_char = hex_array[hex_index]                        
+                        line[x] = hex_char
+
                         break
 
     flake += ''.join(line)
