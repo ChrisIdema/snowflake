@@ -1,6 +1,6 @@
 # snowflake
 
-
+https://stackoverflow.com/beta/challenges/79669436/code-challenge-3-creating-ascii-art-snowflakes
 
 
 ```
@@ -29,11 +29,16 @@ grid has odd length size so there is a center
 the center is marked with a `~`
 
 coordinates are normalized to `[-1,1]`
-coordinates and lengths of
+position and lengths of children are relative to parent, 
+length can never exceed length half of parent
+width can never exceed double the with of the parent
 
 crystal growth is not simulated, instead a tree with branch positions and dimensions is constructed using random parameters
 this tree is symmetrical and 6 identical copies are used to render the snowflake
 
+# code
+
+Code is written in python with standard python libraries.
 
 # example output
 ```
@@ -41,3 +46,10 @@ this tree is symmetrical and 6 identical copies are used to render the snowflake
 
 # AI usage disclosure
 No AI was used in code generation or assistance with writing code.
+
+# instructions
+
+# Lessons learned
+
+- for ascii art the height/width ratio of characters is not 1:1 and not constant and depends on font
+- This Veritasium video taught me how snow crystals grow https://www.youtube.com/watch?v=ao2Jfm35XeE
