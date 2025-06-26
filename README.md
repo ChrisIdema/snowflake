@@ -1,5 +1,7 @@
 # snowflake
 
+plate snow flake generation using ascii art for stackoverflow challange
+
 https://stackoverflow.com/beta/challenges/79669436/code-challenge-3-creating-ascii-art-snowflakes
 
 
@@ -15,17 +17,13 @@ Your submission should include:
 
 # explanation
 
-plate snow flake generation using ascii art
-
-1 branch is generated, the other branches are copies that are rotated
+1 branch is generated, the other 5 branches are copies that are rotated by 60 degree increments
 
 1 branch is max 60 degrees wide, so 30 degrees on each side
-there is no 30 degree ascii char so a 30 degree line has to be approximated
 
 a rectangular grid is used, both height and with are odd length so that there is an exact center
 the height in rows is lower than the width in columns since the character grid is not square
 
-grid has odd length size so there is a center
 the center is marked with a `~`
 
 coordinates are normalized to `[-1,1]`
@@ -43,6 +41,175 @@ Code is written in python with standard python libraries.
 
 # example output
 ```
+                                  |||||||||||
+                                  |||||||||||
+                         \        |||||||||||        /
+                     NNN\\\       |||||||||||       //////
+                     NNNN\\\\     |||||||||||     ////////
+                      NNNN\\\\    |||||||||||    ////////
+           \\\          NNNN\\\  \|||||||||||/  ///////          zzz
+          \\\\\\\\       NNNN\\\|||||||||||||/////////       zzzzzzzz
+        \\\\\\\\\\\\\\   NNNNN\\|||||||||||||/////////   zzzzzzzzzzzzzz
+       \\\\\\\\\\\\\\\\\\\NNNNNN|||||||||||||///zzzzzzzzzzzzzzzzzzzzzzzz
+         \\\\\\\\\\\\\\\\\\\\\NNN||||||||||||/zzzzzzzzzzzzzzzzzzzzzzzz
+             \\\\\\\\\\\\\\\\\\\\\|||||||||||zzzzzzzzzzzzzzzzzzzzz
+                 \\\\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzzzz
+                   =\\\\\\\\\\\\\\\\\|||||zzzzzzzzzzzzzzzz==
+       =============\\\\\\\\\\\\\\\\\\|||zzzzzzzzzzzzz==================
+       =================\\\\\\\\\\\\\\\~\\\\\\\\\\\\\\\=================
+       ==================zzzzzzzzzzzzz|||\\\\\\\\\\\\\\\\\\=============
+                   ==zzzzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\\\\=
+                 zzzzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\\\
+             zzzzzzzzzzzzzzzzzzzzz|||||||||||\\\\\\\\\\\\\\\\\\\\\
+         zzzzzzzzzzzzzzzzzzzzzzzz/||||||||||||NNN\\\\\\\\\\\\\\\\\\\\\
+       zzzzzzzzzzzzzzzzzzzzzzzz///|||||||||||||NNNNNN\\\\\\\\\\\\\\\\\\\
+        zzzzzzzzzzzzzz   /////////|||||||||||||NNNNNNN   \\\\\\\\\\\\\\
+          zzzzzzzz       /////////|||||||||||||NNNNNNN       \\\\\\\\
+           zzz          ///////  /|||||||||||N  NNNNNNN          \\\
+                      ////////    |||||||||||    NNNNNNNN
+                     ////////     |||||||||||     NNNNNNNN
+                     //////       |||||||||||       NNNNNN
+                         /        |||||||||||        N
+                                  |||||||||||
+                                  |||||||||||
+```
+
+another example:
+
+
+```
+                                   |||||||||
+                                   |||||||||
+                                   |||||||||
+                           \       |||||||||       /
+                        NN\\\      |||||||||      /////
+            \            NNN\\     |||||||||     /////            z
+           \\\\\          NNN\\\   |||||||||   //////          zzzzz
+          \\\\\\\\\\        NN\\\\\|||||||||///////        zzzzzzzzzz
+        \\\\\\\\\\\\\\\\    NNNN\\\|||||||||///////    zzzzzzzzzzzzzzzz
+           \\\\\\\\\\\\\\\\\NNNNN\\|||||||||///////zzzzzzzzzzzzzzzzz
+               \\\\\\\\\\\\\\\\\NN\|||||||||///zzzzzzzzzzzzzzzzz
+                   \\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzz
+                       \\\\\\\\\\\\\\|||||zzzzzzzzzzzzzz
+           ================\\\\\\\\\\\|||zzzzzzzzzzz================
+           ====================\\\\\\\\~\\\\\\\\====================
+           ================zzzzzzzzzzz|||\\\\\\\\\\\================
+                       zzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\
+                   zzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\
+               zzzzzzzzzzzzzzzzz///|||||||||NNN\\\\\\\\\\\\\\\\\
+           zzzzzzzzzzzzzzzzz///////|||||||||NNNNNNN\\\\\\\\\\\\\\\\\
+        zzzzzzzzzzzzzzzz    ///////|||||||||NNNNNNN    \\\\\\\\\\\\\\\\
+          zzzzzzzzzz        ///////|||||||||NNNNNNN        \\\\\\\\\\
+           zzzzz          //////   |||||||||   NNNNNN          \\\\\
+            z            /////     |||||||||     NNNNN            \
+                        /////      |||||||||      NNNNN
+                           /       |||||||||       N
+                                   |||||||||
+                                   |||||||||
+                                   |||||||||
+```
+
+One more:
+```
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+           \                        |||||||                        z
+          \\\\\\                    |||||||                    zzzzzz
+        \\\\\\\\\\\\                |||||||                zzzzzzzzzzzz
+        \\\\\\\\\\\\\\\\            |||||||            zzzzzzzzzzzzzzzz
+            \\\\\\\\\\\\\\\\        |||||||        zzzzzzzzzzzzzzzz
+                \\\\\\\\\\\\\\\\    |||||||    zzzzzzzzzzzzzzzz
+                    \\\\\\\\\\\\\\\ ||||||| zzzzzzzzzzzzzzz
+                        \\\\\\\\\\\\\|||||zzzzzzzzzzzzz
+                            \\\\\\\\\\|||zzzzzzzzzz
+                                \\\\\\\~\\\\\\\
+                            zzzzzzzzzz|||\\\\\\\\\\
+                        zzzzzzzzzzzzz|||||\\\\\\\\\\\\\
+                    zzzzzzzzzzzzzzz ||||||| \\\\\\\\\\\\\\\
+                zzzzzzzzzzzzzzzz    |||||||    \\\\\\\\\\\\\\\\
+            zzzzzzzzzzzzzzzz        |||||||        \\\\\\\\\\\\\\\\
+        zzzzzzzzzzzzzzzz            |||||||            \\\\\\\\\\\\\\\\
+        zzzzzzzzzzzz                |||||||                \\\\\\\\\\\\
+          zzzzzz                    |||||||                    \\\\\\
+           z                        |||||||                        \
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+                                    |||||||
+```
+
+with fixes:
+```
+                                      |||
+                                      |||
+                                      |||
+                                  NNN ||| ///
+                                  NNNN|||////
+                                NNNNNN|||//////
+              \       NN         NNNNN|||/////         //       z
+            \\\\\\\ NNNNNNNN       NN/|||///       //////// zzzzzzz
+                \\\\\\\NNNNNNN      NN|||//      ///////zzzzzzz
+                 ===\\\\\\\NNNN       |||       ////zzzzzzz===
+                 =======\\\\\\\N      |||      /zzzzzzz=======
+                    =======N\\\\\\\N N|||/ /zzzzzzz========
+                                \\\\\\|||zzzzzz
+                                    \\\~\\\
+                                zzzzzz|||\\\\\\
+                    ========zzzzzzz/ /|||N N\\\\\\\N=======
+                 =======zzzzzzz/      |||      N\\\\\\\=======
+                 ===zzzzzzz////       |||       NNNN\\\\\\\===
+                zzzzzzz///////      //|||NN      NNNNNNN\\\\\\\
+            zzzzzzz ////////       ///|||/NN       NNNNNNNN \\\\\\\
+              z       //         /////|||NNNNN         NN       \
+                                //////|||NNNNNN
+                                  ////|||NNNN
+                                  /// ||| NNN
+                                      |||
+                                      |||
+                                      |||
+
+
+```
+
+```
+                                  zzz////N\\\
+                                  zz/////////
+                              NNNNN//////////////
+                           NNNNNN///////////////////
+                       \ |||NNN||//////////////////||| z
+                  NNNNN\\\|||NN||||||||||||||||///|||zzz/////
+           zzzNNNNNNNNNNN\     N|||||||||||||||/     z//////////\\\\
+          NNNNNNNNNNNN\NNN      |||||||||||||||      //zzz===========
+        NNNNNNNNNNNNN\\\\\\     |||||||||||||||     zzzzzz============/
+       |||NNNNNNNNN\\\\\\\\\\\\ ||||||||||||||| zzzzzzzzzzzz==========||
+       ||||NNNNNNN\\\\\\\\\\\\\\\|||||||||||||zzzzzzzzzzzzzzz=========||
+         ===NNNNN\\\\\\\\\\\\\\\\\|||||||||||zzzzzzzzzzzzzzzzz========
+         ====\\\\\\\\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzzzzzz======
+         ======\\\\\\\\\\\\\\\\\\\\\\|||||zzzzzzzzzzzzzzzzzzzzz=======
+          \\\\\     \\\\\\\\\\\\\\\\\\|||zzzzzzzzzzzzzzzzzz     zzzzz
+           \\\          \\\\\\\\\\\\\\\~\\\\\\\\\\\\\\\          \\\
+          zzzzz     zzzzzzzzzzzzzzzzzz|||\\\\\\\\\\\\\\\\\\     \\\\\
+         =======zzzzzzzzzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\\\\\\\\\======
+         ======zzzzzzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\\\\\\\====
+         ========zzzzzzzzzzzzzzzzz|||||||||||\\\\\\\\\\\\\\\\\NNNNN===
+       ||=========zzzzzzzzzzzzzzz|||||||||||||\\\\\\\\\\\\\\\NNNNNNN||||
+       ||==========zzzzzzzzzzzz ||||||||||||||| \\\\\\\\\\\\NNNNNNNNN|||
+        /============zzzzzz     |||||||||||||||     \\\\\\NNNNNNNNNNNNN
+          ===========zzz//      |||||||||||||||      NNN\NNNNNNNNNNNN
+           \\\\//////////z     /|||||||||||||||N     \NNNNNNNNNNNzzz
+                  /////zzz|||///||||||||||||||||NN|||\\\NNNNN
+                       z |||//////////////////||NNN||| \
+                           ///////////////////NNNNNN
+                              //////////////NNNNN
+                                  /////////zz
+                                  \\\N////zzz
+
 ```
 
 # AI usage disclosure

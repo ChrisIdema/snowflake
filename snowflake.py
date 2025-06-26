@@ -7,48 +7,31 @@ font_height_to_width = 32/14 # set this to your font ratio
 grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
 max_length_sq = 0.9**2
 
-number_of_levels = 2
-
-# symmetrical tree
-root = {"connection": 0,                
-        "l" : 0.75,
-        "w": 0.1,
-        "angle":0,
-        "children":[]        
-        }
-
-root["children"].append(
-{"connection":0.5,
-"l" : 1,
-"w": 1,
-"angle":30,
-"children":[]
-}
-)
-
-
-root["children"][0]["children"].append(
-{"connection":0.5,
-"l" : 0.5,
-"w": 0.5,
-"angle":30,
-"children":[]
-}
-)
 
 def create_half_tree(level, number_of_levels):
 
     node = {"connection": 0,                
-    "l" : random.random(),
-    "w": 0.1,
+    "l" : 0,
+    "w": 0,
     "angle":0,
     "children":[]        
     }
 
     if level == 0:
-        node["w"] = random.uniform(0.1,0.2)
+        node["connection"] = 0
+    else:
+        node["connection"] = random.uniform(0.1,0.9)
+
+    if level == 0:
+        node["w"] = random.uniform(0.01,0.2)
     else:
         node["w"] = random.uniform(0.5,2)
+
+    if level == 0:
+        node["l"] = random.uniform(0.1,0.9)
+    else:
+        node["l"] = random.uniform(0.1,0.5)
+    
     
     if level == 0:
         node["angle"] = 0        
@@ -66,13 +49,12 @@ def create_half_tree(level, number_of_levels):
 
     return node
 
-    
-
 
 def mirror_node(node):
     copy = node.copy()
     copy["angle"] *= -1
     return copy
+
 
 def mirror_tree(node):
     for child in node["children"]:
@@ -81,28 +63,6 @@ def mirror_tree(node):
     mirror_children = [mirror_node(child) for child in node["children"]]
     node["children"] += mirror_children
 
-
-
-# print(root)
-
-# mirror_tree(root)
-
-# print(root)
-
-
-test_tree = create_half_tree(0, random.randint(1,3))
-
-# print(test_tree)
-mirror_tree(test_tree)
-
-# root["children"][0]["children"].append(
-# {"connection":0.75,
-# "l" : 0.5,
-# "w": 2,
-# "angle":-30,
-# "children":[]
-# }
-# )
 
 def get_nodes(root, nodes=[],l=1,w=1, angle=0, origin=[0,0]):
     node = root.copy()
@@ -123,8 +83,6 @@ def get_nodes(root, nodes=[],l=1,w=1, angle=0, origin=[0,0]):
     return nodes
 
 
-
-
 def rotate(origin, point, angle):    
     ox, oy = origin
     px, py = point
@@ -132,7 +90,6 @@ def rotate(origin, point, angle):
     x2 = ox + cos(radians(angle)) * (px - ox) - sin(radians(angle)) * (py - oy)
     y2 = oy + sin(radians(angle)) * (px - ox) + cos(radians(angle)) * (py - oy)
     return [x2,y2]
-
 
 
 def is_in_node(node, point):
@@ -144,6 +101,8 @@ def is_in_node(node, point):
             y <= node["origin"][1] and y >= node["origin"][1] - node["l"]
 
 
+test_tree = create_half_tree(0, random.randint(1,3))
+mirror_tree(test_tree)
 nodes = get_nodes(test_tree)
 # print(nodes)
 
@@ -156,12 +115,11 @@ for y in range(grid_height):
         dx = (x - grid_width//2) / (grid_width//2)
         dy = (y - grid_height//2) / (grid_height//2)
         length_sq = dx**2 + dy**2 # length squared so no need to calculate square root
-        #print(x,y,dx,dy)
+
         angle_degrees = degrees(atan2(dy,dx)) + 90
         if angle_degrees > 180:
             angle_degrees -= 360
-        #print(angle_degrees)
-        #if length_sq <= max_length_sq and angle_degrees >= -30 and angle_degrees <=45:
+
         if length_sq == 0:
             line[x] = '~'
         elif length_sq > max_length_sq:
@@ -174,28 +132,20 @@ for y in range(grid_height):
 
             hex_array = "|//z=\\\\N|/7z=\\\\N"
 
-            if segment_index == 0:
-                for node in nodes:
-                    in_node = is_in_node(node,[dx,dy])
-                    if in_node:
-                        octant_index = round(((node["angle"] + 360) %360)/45)%8
-                        octant_char = octant_array[octant_index]
-                        line[x] = octant_char
-                        break
-            else:
-                for node in nodes:
-                    dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
-                    in_node = is_in_node(node,[dx2,dy2])
-                    if in_node:
-                        # octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
-                        # octant_char = octant_array[octant_index]                        
-                        # line[x] = octant_char
 
-                        hex_index = round(((node["angle"]+segment_index*60 + 360) %360)/22.5)%16
-                        hex_char = hex_array[hex_index]                        
-                        line[x] = hex_char
+            for node in nodes:
+                dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
+                in_node = is_in_node(node,[dx2,dy2])
+                if in_node:
+                    # octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
+                    # octant_char = octant_array[octant_index]                        
+                    # line[x] = octant_char
 
-                        break
+                    hex_index = round(((node["angle"]+segment_index*60 + 360) %360)/22.5)%16
+                    hex_char = hex_array[hex_index]                        
+                    line[x] = hex_char
+
+                    break
 
     flake += ''.join(line)
 
