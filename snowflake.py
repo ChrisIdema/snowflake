@@ -24,33 +24,35 @@ root["children"].append(
 }
 )
 
-root["children"].append(
+
+root["children"][0]["children"].append(
 {"connection":0.5,
-"l" : 1,
-"w": 1,
-"angle":-30,
+"l" : 0.5,
+"w": 0.5,
+"angle":30,
 "children":[]
 }
 )
 
+def mirror_node(node):
+    copy = node.copy()
+    copy["angle"] *= -1
+    return copy
 
-# root["children"][0]["children"].append(
-# {"connection":0.5,
-# "l" : 0.25,
-# "w": 1,
-# "angle":-30,
-# "children":[]
-# }
-# )
+def mirror_tree(node):
+    for child in node["children"]:
+        mirror_tree(child)
 
-# # root["children"][0]["children"].append(
-# {"connection":0.5,
-# "l" : 0.5,
-# "w": 2,
-# "angle":30,
-# "children":[]
-# }
-# )
+    mirror_children = [mirror_node(child) for child in node["children"]]
+    node["children"] += mirror_children
+
+
+
+# print(root)
+
+mirror_tree(root)
+
+# print(root)
 
 # root["children"][0]["children"].append(
 # {"connection":0.75,
