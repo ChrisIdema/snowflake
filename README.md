@@ -11,7 +11,7 @@ Parameters for 1 segment are generated, the other 5 segments are copies that are
 
 1 branch is max 60 degrees wide, so 30 degrees on each side.
 
-A rectangular grid is used, both height and with are odd length so that there is an exact center.
+A rectangular grid is used, both height and width are odd length so that there is an exact center.
 
 The height in rows is lower than the width in columns since the character grid is not square. This is adjusted using font_height_to_width.
 
