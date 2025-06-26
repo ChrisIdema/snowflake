@@ -1,11 +1,13 @@
 from math import atan2, degrees, radians, sin, cos
-from random import random
+import random  # random, choice, randint
 
 grid_width = 79 # has to be odd
 font_height_to_width = 32/14 # set this to your font ratio
 
 grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
 max_length_sq = 0.9**2
+
+number_of_levels = 2
 
 # symmetrical tree
 root = {"connection": 0,                
@@ -34,6 +36,39 @@ root["children"][0]["children"].append(
 }
 )
 
+def create_half_tree(level, number_of_levels):
+
+    node = {"connection": 0,                
+    "l" : random.random(),
+    "w": 0.1,
+    "angle":0,
+    "children":[]        
+    }
+
+    if level == 0:
+        node["w"] = random.uniform(0.1,0.2)
+    else:
+        node["w"] = random.uniform(0.5,2)
+    
+    if level == 0:
+        node["angle"] = 0        
+    elif level == 1:
+        node["angle"] = 30
+    elif level >= 2:
+        node["angle"] = random.choice([30,150])
+
+    number_of_children = random.randint(0,3)
+
+    if level < number_of_levels:
+        for i in range(number_of_children):
+            child = create_half_tree(level+1, number_of_levels)
+            node["children"].append(child)
+
+    return node
+
+    
+
+
 def mirror_node(node):
     copy = node.copy()
     copy["angle"] *= -1
@@ -50,9 +85,15 @@ def mirror_tree(node):
 
 # print(root)
 
-mirror_tree(root)
+# mirror_tree(root)
 
 # print(root)
+
+
+test_tree = create_half_tree(0, random.randint(1,3))
+
+# print(test_tree)
+mirror_tree(test_tree)
 
 # root["children"][0]["children"].append(
 # {"connection":0.75,
@@ -80,8 +121,8 @@ def get_nodes(root, nodes=[],l=1,w=1, angle=0, origin=[0,0]):
         get_nodes(child,nodes, node["l"], node["w"], node["angle"], node["origin"])
 
     return nodes
-nodes = get_nodes(root)
-# print(nodes)
+
+
 
 
 def rotate(origin, point, angle):    
@@ -102,6 +143,9 @@ def is_in_node(node, point):
     return  x >= node["origin"][0] - node["w"] and x <= node["origin"][0] + node["w"] and \
             y <= node["origin"][1] and y >= node["origin"][1] - node["l"]
 
+
+nodes = get_nodes(test_tree)
+# print(nodes)
 
 
 flake = ""
