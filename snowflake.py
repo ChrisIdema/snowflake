@@ -5,7 +5,7 @@ grid_width = 79 # has to be odd
 font_height_to_width = 32/14 # set this to your font ratio
 
 grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
-max_length_sq = (grid_width//2)**2
+max_length_sq = 0.9**2
 
 # symmetrical tree
 root = {"connection": 0,                
@@ -118,6 +118,8 @@ for y in range(grid_height):
         #if length_sq <= max_length_sq and angle_degrees >= -30 and angle_degrees <=45:
         if length_sq == 0:
             line[x] = '~'
+        elif length_sq > max_length_sq:
+            pass 
         else:
             segment_index = int(((angle_degrees + 30 + 360) %360)//60)
             octant_index = round(((angle_degrees + 360) %360)/45)%8
