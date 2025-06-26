@@ -17,14 +17,15 @@ Your submission should include:
 
 # explanation
 
-1 branch is generated, the other 5 branches are copies that are rotated by 60 degree increments
+1 branch is generated, the other 5 branches are copies that are rotated by 60 degree increments. The reason is that real snow flakes have nearly identical segments since they all form under the same conditions (temperature, pressure, humidity, airflow, etc.).
 
 1 branch is max 60 degrees wide, so 30 degrees on each side
 
 a rectangular grid is used, both height and with are odd length so that there is an exact center
-the height in rows is lower than the width in columns since the character grid is not square
 
-the center is marked with a `~`
+the height in rows is lower than the width in columns since the character grid is not square. This is adjusted using `font_height_to_width`.
+
+The center is marked with a `~`
 
 coordinates are normalized to `[-1,1]`
 position and lengths of children are relative to parent, 
@@ -35,114 +36,12 @@ minimum 1 and maximum 3 levels are used (including root) to simplify structure a
 crystal growth is not simulated, instead a tree with branch positions and dimensions is constructed using random parameters
 this tree is symmetrical and 6 identical copies are used to render the snowflake
 
+
 # code
 
 Code is written in python with standard python libraries.
 
-# example output
-```
-                                  |||||||||||
-                                  |||||||||||
-                         \        |||||||||||        /
-                     NNN\\\       |||||||||||       //////
-                     NNNN\\\\     |||||||||||     ////////
-                      NNNN\\\\    |||||||||||    ////////
-           \\\          NNNN\\\  \|||||||||||/  ///////          zzz
-          \\\\\\\\       NNNN\\\|||||||||||||/////////       zzzzzzzz
-        \\\\\\\\\\\\\\   NNNNN\\|||||||||||||/////////   zzzzzzzzzzzzzz
-       \\\\\\\\\\\\\\\\\\\NNNNNN|||||||||||||///zzzzzzzzzzzzzzzzzzzzzzzz
-         \\\\\\\\\\\\\\\\\\\\\NNN||||||||||||/zzzzzzzzzzzzzzzzzzzzzzzz
-             \\\\\\\\\\\\\\\\\\\\\|||||||||||zzzzzzzzzzzzzzzzzzzzz
-                 \\\\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzzzz
-                   =\\\\\\\\\\\\\\\\\|||||zzzzzzzzzzzzzzzz==
-       =============\\\\\\\\\\\\\\\\\\|||zzzzzzzzzzzzz==================
-       =================\\\\\\\\\\\\\\\~\\\\\\\\\\\\\\\=================
-       ==================zzzzzzzzzzzzz|||\\\\\\\\\\\\\\\\\\=============
-                   ==zzzzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\\\\=
-                 zzzzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\\\
-             zzzzzzzzzzzzzzzzzzzzz|||||||||||\\\\\\\\\\\\\\\\\\\\\
-         zzzzzzzzzzzzzzzzzzzzzzzz/||||||||||||NNN\\\\\\\\\\\\\\\\\\\\\
-       zzzzzzzzzzzzzzzzzzzzzzzz///|||||||||||||NNNNNN\\\\\\\\\\\\\\\\\\\
-        zzzzzzzzzzzzzz   /////////|||||||||||||NNNNNNN   \\\\\\\\\\\\\\
-          zzzzzzzz       /////////|||||||||||||NNNNNNN       \\\\\\\\
-           zzz          ///////  /|||||||||||N  NNNNNNN          \\\
-                      ////////    |||||||||||    NNNNNNNN
-                     ////////     |||||||||||     NNNNNNNN
-                     //////       |||||||||||       NNNNNN
-                         /        |||||||||||        N
-                                  |||||||||||
-                                  |||||||||||
-```
-
-another example:
-
-
-```
-                                   |||||||||
-                                   |||||||||
-                                   |||||||||
-                           \       |||||||||       /
-                        NN\\\      |||||||||      /////
-            \            NNN\\     |||||||||     /////            z
-           \\\\\          NNN\\\   |||||||||   //////          zzzzz
-          \\\\\\\\\\        NN\\\\\|||||||||///////        zzzzzzzzzz
-        \\\\\\\\\\\\\\\\    NNNN\\\|||||||||///////    zzzzzzzzzzzzzzzz
-           \\\\\\\\\\\\\\\\\NNNNN\\|||||||||///////zzzzzzzzzzzzzzzzz
-               \\\\\\\\\\\\\\\\\NN\|||||||||///zzzzzzzzzzzzzzzzz
-                   \\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzz
-                       \\\\\\\\\\\\\\|||||zzzzzzzzzzzzzz
-           ================\\\\\\\\\\\|||zzzzzzzzzzz================
-           ====================\\\\\\\\~\\\\\\\\====================
-           ================zzzzzzzzzzz|||\\\\\\\\\\\================
-                       zzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\
-                   zzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\
-               zzzzzzzzzzzzzzzzz///|||||||||NNN\\\\\\\\\\\\\\\\\
-           zzzzzzzzzzzzzzzzz///////|||||||||NNNNNNN\\\\\\\\\\\\\\\\\
-        zzzzzzzzzzzzzzzz    ///////|||||||||NNNNNNN    \\\\\\\\\\\\\\\\
-          zzzzzzzzzz        ///////|||||||||NNNNNNN        \\\\\\\\\\
-           zzzzz          //////   |||||||||   NNNNNN          \\\\\
-            z            /////     |||||||||     NNNNN            \
-                        /////      |||||||||      NNNNN
-                           /       |||||||||       N
-                                   |||||||||
-                                   |||||||||
-                                   |||||||||
-```
-
-One more:
-```
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-           \                        |||||||                        z
-          \\\\\\                    |||||||                    zzzzzz
-        \\\\\\\\\\\\                |||||||                zzzzzzzzzzzz
-        \\\\\\\\\\\\\\\\            |||||||            zzzzzzzzzzzzzzzz
-            \\\\\\\\\\\\\\\\        |||||||        zzzzzzzzzzzzzzzz
-                \\\\\\\\\\\\\\\\    |||||||    zzzzzzzzzzzzzzzz
-                    \\\\\\\\\\\\\\\ ||||||| zzzzzzzzzzzzzzz
-                        \\\\\\\\\\\\\|||||zzzzzzzzzzzzz
-                            \\\\\\\\\\|||zzzzzzzzzz
-                                \\\\\\\~\\\\\\\
-                            zzzzzzzzzz|||\\\\\\\\\\
-                        zzzzzzzzzzzzz|||||\\\\\\\\\\\\\
-                    zzzzzzzzzzzzzzz ||||||| \\\\\\\\\\\\\\\
-                zzzzzzzzzzzzzzzz    |||||||    \\\\\\\\\\\\\\\\
-            zzzzzzzzzzzzzzzz        |||||||        \\\\\\\\\\\\\\\\
-        zzzzzzzzzzzzzzzz            |||||||            \\\\\\\\\\\\\\\\
-        zzzzzzzzzzzz                |||||||                \\\\\\\\\\\\
-          zzzzzz                    |||||||                    \\\\\\
-           z                        |||||||                        \
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-                                    |||||||
-```
+# example outputs
 
 with fixes:
 ```
@@ -216,6 +115,10 @@ with fixes:
 No AI was used in code generation or assistance with writing code.
 
 # instructions
+
+```
+python snowflake.py
+```
 
 # Lessons learned
 
