@@ -156,15 +156,14 @@ print(flake)
 #print(nodes)
 
 # create SVG:
-svg_w_h = [399,399]
-svg_center = [(svg_w_h[0]-1)/2, (svg_w_h[1]-1)/2]
+
 svg_lines = []
 for node in nodes:
-    x1 = node["origin"][0]*svg_w_h[0]/2 + svg_center[0]
-    y1 = node["origin"][1]*svg_w_h[1]/2 + svg_center[1]
-    stroke_width = node["w"] * svg_w_h[0]/2
-    dx = sin(radians(node["angle"])) * node["l"] * svg_w_h[0]/2
-    dy = -cos(radians(node["angle"])) * node["l"] * svg_w_h[0]/2
+    x1 = node["origin"][0]
+    y1 = node["origin"][1]
+    stroke_width = node["w"]
+    dx = sin(radians(node["angle"])) * node["l"]
+    dy = -cos(radians(node["angle"])) * node["l"]
     x2 = x1 + dx
     y2 = y1 + dy
 
@@ -180,11 +179,19 @@ for node in nodes:
 svg_lines_text = ''.join([f'<line x1="{svg_line["x1"]}" y1="{svg_line["y1"]}" x2="{svg_line["x2"]}" y2="{svg_line["y2"]}" style="stroke:blue;stroke-width:{svg_line["stroke-width"]}"/>\n' for svg_line in svg_lines])
 
 svg_text = f'''
-<svg
-  width="{svg_w_h[0]}"
-  height="{svg_w_h[1]}"
->
-{svg_lines_text}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 2 2">
+<defs>
+  <g id="lobe">
+    {svg_lines_text}
+  </g>
+</defs>
+
+<use href="#lobe" transform="rotate(0)"/>
+<use href="#lobe" transform="rotate(60)"/>
+<use href="#lobe" transform="rotate(120)"/>
+<use href="#lobe" transform="rotate(180)"/>
+<use href="#lobe" transform="rotate(240)"/>
+<use href="#lobe" transform="rotate(300)"/>
 </svg>
 '''
 
