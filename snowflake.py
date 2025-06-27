@@ -7,6 +7,7 @@ font_height_to_width = 32/14 # set this to your font ratio
 grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
 max_length_sq = 0.9**2
 
+# random.seed(4)
 
 def create_half_tree(level, number_of_levels):
 
@@ -101,7 +102,8 @@ def is_in_node(node, point):
             y <= node["origin"][1] and y >= node["origin"][1] - node["l"]
 
 
-test_tree = create_half_tree(0, random.randint(1,3))
+test_tree = create_half_tree(0, random.randint(3,3))
+#print(test_tree)
 mirror_tree(test_tree)
 nodes = get_nodes(test_tree)
 # print(nodes)
@@ -150,3 +152,40 @@ for y in range(grid_height):
     flake += ''.join(line)
 
 print(flake)
+
+#print(nodes)
+
+# create SVG:
+svg_w_h = [399,399]
+svg_center = [(svg_w_h[0]-1)/2, (svg_w_h[1]-1)/2]
+svg_lines = []
+for node in nodes:
+    x1 = node["origin"][0]*svg_w_h[0]/2 + svg_center[0]
+    y1 = node["origin"][1]*svg_w_h[1]/2 + svg_center[1]
+    stroke_width = node["w"] * svg_w_h[0]/2
+    dx = sin(radians(node["angle"])) * node["l"] * svg_w_h[0]/2
+    dy = -cos(radians(node["angle"])) * node["l"] * svg_w_h[0]/2
+    x2 = x1 + dx
+    y2 = y1 + dy
+
+    svg_lines.append({"x1":x1,
+                      "y1":y1,
+                      "x2":x2,
+                      "y2":y2,
+                      "stroke-width":stroke_width                      
+                      })
+
+#svg_lines_text = '<line x1="200" y1="200" x2="200" y2="50" style="stroke:blue;stroke-width:50"/>'
+
+svg_lines_text = ''.join([f'<line x1="{svg_line["x1"]}" y1="{svg_line["y1"]}" x2="{svg_line["x2"]}" y2="{svg_line["y2"]}" style="stroke:blue;stroke-width:{svg_line["stroke-width"]}"/>\n' for svg_line in svg_lines])
+
+svg_text = f'''
+<svg
+  width="{svg_w_h[0]}"
+  height="{svg_w_h[1]}"
+>
+{svg_lines_text}
+</svg>
+'''
+
+print(svg_text)
