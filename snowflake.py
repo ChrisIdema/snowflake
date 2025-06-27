@@ -8,6 +8,7 @@ grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
 max_length_sq = 0.9**2
 
 
+
 def create_half_tree(level, number_of_levels):
 
     node = {"connection": 0,                
@@ -101,11 +102,11 @@ def is_in_node(node, point):
             y <= node["origin"][1] and y >= node["origin"][1] - node["l"]
 
 
+#random.seed(4)
 test_tree = create_half_tree(0, random.randint(1,3))
 mirror_tree(test_tree)
 nodes = get_nodes(test_tree)
 # print(nodes)
-
 
 flake = ""
 for y in range(grid_height):
@@ -132,9 +133,8 @@ for y in range(grid_height):
 
             hex_array = "|//z=\\\\N|/7z=\\\\N"
 
-
-            for node in nodes:
-                dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
+            dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
+            for node in nodes:                
                 in_node = is_in_node(node,[dx2,dy2])
                 if in_node:
                     # octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
