@@ -120,7 +120,7 @@ def create_tree_nodes(seed=None):
     return nodes
 
 
-# renders the nodes in ascii, an svg function is under development
+# renders the nodes in ascii
 def render_flake_ascii(nodes):
     flake = ""
     for y in range(grid_height):
