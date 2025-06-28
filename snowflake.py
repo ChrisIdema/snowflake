@@ -204,22 +204,21 @@ if __name__ == "__main__":
 
         svg_lines_text = ''.join([f'<line x1="{svg_line["x1"]}" y1="{svg_line["y1"]}" x2="{svg_line["x2"]}" y2="{svg_line["y2"]}" style="stroke:blue;stroke-width:{svg_line["stroke-width"]}"/>\n' for svg_line in svg_lines])
 
-        svg_text = f'''
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 2 2">
-        <defs>
-        <g id="lobe">
-            {svg_lines_text}
-        </g>
-        </defs>
-
-        <use href="#lobe" transform="rotate(0)"/>
-        <use href="#lobe" transform="rotate(60)"/>
-        <use href="#lobe" transform="rotate(120)"/>
-        <use href="#lobe" transform="rotate(180)"/>
-        <use href="#lobe" transform="rotate(240)"/>
-        <use href="#lobe" transform="rotate(300)"/>
-        </svg>
-        '''
+        svg_text = f'''\
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 2 2">
+<defs>
+<g id="lobe">
+{svg_lines_text}
+</g>
+</defs>
+<use href="#lobe" transform="rotate(0)"/>
+<use href="#lobe" transform="rotate(60)"/>
+<use href="#lobe" transform="rotate(120)"/>
+<use href="#lobe" transform="rotate(180)"/>
+<use href="#lobe" transform="rotate(240)"/>
+<use href="#lobe" transform="rotate(300)"/>
+</svg>
+'''
 
         #print(svg_text)
         with open(file_name, "w") as f:

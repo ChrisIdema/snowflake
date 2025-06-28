@@ -1,8 +1,7 @@
-
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 2 2">
-        <defs>
-        <g id="lobe">
-            <line x1="0.0" y1="0.0" x2="0.0" y2="-0.8947957775300946" style="stroke:blue;stroke-width:0.12283623909630899"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 2 2">
+<defs>
+<g id="lobe">
+<line x1="0.0" y1="0.0" x2="0.0" y2="-0.8947957775300946" style="stroke:blue;stroke-width:0.12283623909630899"/>
 <line x1="0.0" y1="-0.7305840219716849" x2="0.06380663295180539" y2="-0.8411003521041104" style="stroke:blue;stroke-width:0.21231722963706112"/>
 <line x1="0.01924546799330646" y1="-0.7639181503515323" x2="0.019245467993306464" y2="-0.7308180066108698" style="stroke:blue;stroke-width:0.19553152112651312"/>
 <line x1="0.025069486499841514" y1="-0.7740056463090725" x2="0.025069486499841517" y2="-0.7317449429996397" style="stroke:blue;stroke-width:0.3128203905418346"/>
@@ -34,14 +33,12 @@
 <line x1="-0.06587330155164141" y1="-0.564490543941138" x2="-0.1648875035051099" y2="-0.6216564200925689" style="stroke:blue;stroke-width:0.16855721900198864"/>
 <line x1="0.0" y1="-0.518155292760407" x2="-0.055793479611637956" y2="-0.6147924341788222" style="stroke:blue;stroke-width:0.13982580688886476"/>
 
-        </g>
-        </defs>
-
-        <use href="#lobe" transform="rotate(0)"/>
-        <use href="#lobe" transform="rotate(60)"/>
-        <use href="#lobe" transform="rotate(120)"/>
-        <use href="#lobe" transform="rotate(180)"/>
-        <use href="#lobe" transform="rotate(240)"/>
-        <use href="#lobe" transform="rotate(300)"/>
-        </svg>
-        
+</g>
+</defs>
+<use href="#lobe" transform="rotate(0)"/>
+<use href="#lobe" transform="rotate(60)"/>
+<use href="#lobe" transform="rotate(120)"/>
+<use href="#lobe" transform="rotate(180)"/>
+<use href="#lobe" transform="rotate(240)"/>
+<use href="#lobe" transform="rotate(300)"/>
+</svg>
