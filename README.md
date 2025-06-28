@@ -35,70 +35,77 @@ Code is written in python with standard python libraries.
 # Example outputs
 
 ```
-                                      |||
-                                      |||
-                                      |||
-                                  NNN ||| ///
-                                  NNNN|||////
-                                NNNNNN|||//////
-              \       NN         NNNNN|||/////         //       z
-            \\\\\\\ NNNNNNNN       NN/|||///       //////// zzzzzzz
-                \\\\\\\NNNNNNN      NN|||//      ///////zzzzzzz
-                 ===\\\\\\\NNNN       |||       ////zzzzzzz===
-                 =======\\\\\\\N      |||      /zzzzzzz=======
-                    =======N\\\\\\\N N|||/ /zzzzzzz========
-                                \\\\\\|||zzzzzz
-                                    \\\~\\\
-                                zzzzzz|||\\\\\\
-                    ========zzzzzzz/ /|||N N\\\\\\\N=======
-                 =======zzzzzzz/      |||      N\\\\\\\=======
-                 ===zzzzzzz////       |||       NNNN\\\\\\\===
-                zzzzzzz///////      //|||NN      NNNNNNN\\\\\\\
-            zzzzzzz ////////       ///|||/NN       NNNNNNNN \\\\\\\
-              z       //         /////|||NNNNN         NN       \
-                                //////|||NNNNNN
-                                  ////|||NNNN
-                                  /// ||| NNN
-                                      |||
-                                      |||
-                                      |||
+seed: 17511081380
 
 
+                                  ||       ||
+                               \\NNN||   ||///zz
+                                \\NNN|||||///zz
+                                  \NNN|||///z
+                                  \\NN|||//zz
+              ||                   N  |||  /                   ||
+           \\NNN||              NNNNN\|||z/////              ||///zz
+            \\NNN|||             |NNNN|||////|             |||///zz
+              \NNNN|   NNN      ||NNzz|||////||      ///   |////z
+       \ \\\\\\\\\\N  NNNN\\\\\   \zz||||//||   zzzzz////  /zzzzzzzzzz z
+       ==========\\\\\\|NNNNN|\   ||z||||/|||   |\\////|zzzzzz==========
+      zz zzzzzzzz   z\\\\\\NNN\\\\|||||||||||zzz\\\\zzzzzz\   \\\\\\\\ \\
+                 =======|\\\\\\\\\    |||    zzzzzzzzz========
+                 =======||\\\\\\\\\   |||   zzzzzz============
+                    \\\\ z\\\\\ \\\\\\|||zzzzzz zzzzzz zzzz
+                            \\      \\\~\\\      \\
+                    zzzz zzzzzz zzzzzz|||\\\\\\ \\\\\z \\\\
+                 ============zzzzzz   |||   \\\\\\\\\||=======
+                 ========zzzzzzzzz    |||    \\\\\\\\\|=======
+      \\ \\\\\\\\   \zzzzzz\\\\zzz|||||||||||\\\\NNN\\\\\\z   zzzzzzzz zz
+       ==========zzzzzz|////\\|   |||/||||z||   \|NNNNN|\\\\\\==========
+       z zzzzzzzzzz/  ////zzzzz   ||//||||zz\   \\\\\NNNN  N\\\\\\\\\\ \
+              z////|   ///      ||////|||zzNN||      NNN   |NNNN\
+            zz///|||             |////|||NNNN|             |||NNN\\
+           zz///||              /////z|||\NNNNN              ||NNN\\
+              ||                   /  |||  N                   ||
+                                  zz//|||NN\\
+                                  z///|||NNN\
+                                zz///|||||NNN\\
+                               zz///||   ||NNN\\
+                                  ||       ||
 ```
 
 ```
-                                  zzz////N\\\
-                                  zz/////////
-                              NNNNN//////////////
-                           NNNNNN///////////////////
-                       \ |||NNN||//////////////////||| z
-                  NNNNN\\\|||NN||||||||||||||||///|||zzz/////
-           zzzNNNNNNNNNNN\     N|||||||||||||||/     z//////////\\\\
-          NNNNNNNNNNNN\NNN      |||||||||||||||      //zzz===========
-        NNNNNNNNNNNNN\\\\\\     |||||||||||||||     zzzzzz============/
-       |||NNNNNNNNN\\\\\\\\\\\\ ||||||||||||||| zzzzzzzzzzzz==========||
-       ||||NNNNNNN\\\\\\\\\\\\\\\|||||||||||||zzzzzzzzzzzzzzz=========||
-         ===NNNNN\\\\\\\\\\\\\\\\\|||||||||||zzzzzzzzzzzzzzzzz========
-         ====\\\\\\\\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzzzzzz======
-         ======\\\\\\\\\\\\\\\\\\\\\\|||||zzzzzzzzzzzzzzzzzzzzz=======
-          \\\\\     \\\\\\\\\\\\\\\\\\|||zzzzzzzzzzzzzzzzzz     zzzzz
-           \\\          \\\\\\\\\\\\\\\~\\\\\\\\\\\\\\\          \\\
-          zzzzz     zzzzzzzzzzzzzzzzzz|||\\\\\\\\\\\\\\\\\\     \\\\\
-         =======zzzzzzzzzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\\\\\\\\\======
-         ======zzzzzzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\\\\\\\====
-         ========zzzzzzzzzzzzzzzzz|||||||||||\\\\\\\\\\\\\\\\\NNNNN===
-       ||=========zzzzzzzzzzzzzzz|||||||||||||\\\\\\\\\\\\\\\NNNNNNN||||
-       ||==========zzzzzzzzzzzz ||||||||||||||| \\\\\\\\\\\\NNNNNNNNN|||
-        /============zzzzzz     |||||||||||||||     \\\\\\NNNNNNNNNNNNN
-          ===========zzz//      |||||||||||||||      NNN\NNNNNNNNNNNN
-           \\\\//////////z     /|||||||||||||||N     \NNNNNNNNNNNzzz
-                  /////zzz|||///||||||||||||||||NN|||\\\NNNNN
-                       z |||//////////////////||NNN||| \
-                           ///////////////////NNNNNN
-                              //////////////NNNNN
-                                  /////////zz
-                                  \\\N////zzz
+seed: 17511082569
 
+
+                                 //|||||||||NN
+                                 //|||||||||NN
+                          ||||||||||||||||||///||||||
+                         ||||NNNNN||||||||||//////||||
+                   \\ \\\||||NNNNN||||||||||z/////||||zzz zz
+                 \\\ NN\\     NNNN\|||||||||z////     zz// zzz
+           \\==\NNNNNNNN      \NN\\|||||||||zz//z      //////z/z==zz
+          \\\\\\\NNNNNNNN||||\\\NNN|||||||||///zzz||||//////z/zzzzzzz
+        \\\\\\\\\\\\\NNNNNN||| \  N|||||||||/  z |||//////zzzzzzzzzzzzz
+       \\\\\\\\\\\\\\\\\\NNN       |||||||||       ///zzzzzzzzzzzzzzzzzz
+       NNN\\\\\\\\\\\\\\\\\\\      |||||||||      zzzzzzzzzzzzzzzzzzz///
+         \\\=\\\\\\\\\\\\\\\\\\\\  |||||||||  zzzzzzzzzzzzzzzzzzz====z
+         \\======z\\\\\\\\\\\\\\\\\\|||||||zzzzzzzzzzzzzzzzzz\=======z
+       \\ \=======zz==\\\\\\\\\\\\\\\|||||zzzzzzzzzzzzzzz==\\=======z zz
+         \\\\   zzzzz     \\\\\\\\\\\\|||zzzzzzzzzzzz     \\\\\   zzzz
+         \\\      zzz         \\\\\\\\\~\\\\\\\\\         zzz      \\\
+         zzzz   \\\\\     zzzzzzzzzzzz|||\\\\\\\\\\\\     zzzzz   \\\\
+       zz z=======\\==zzzzzzzzzzzzzzz|||||\\\\\\\\\\\\\\\==zz=======\ \\
+         z=======\zzzzzzzzzzzzzzzzzz|||||||\\\\\\\\\\\\\\\\\\z======\\
+         z====zzzzzzzzzzzzzzzzzzz  |||||||||  \\\\\\\\\\\\\\\\\\\\=\\\
+       ///zzzzzzzzzzzzzzzzzzz      |||||||||      \\\\\\\\\\\\\\\\\\\NNN
+       zzzzzzzzzzzzzzzzzz///       |||||||||       NNN\\\\\\\\\\\\\\\\\\
+        zzzzzzzzzzzzz//////||| z  /|||||||||N  \ |||NNNNNN\\\\\\\\\\\\\
+          zzzzzzz/z//////||||zzz///|||||||||NNN\\\||||NNNNNNNN\\\\\\\
+           zz==z/z//////      z//zz|||||||||\\NN\      NNNNNNNN\==\\
+                 zzz //zz     ////z|||||||||\NNNN     \\NN \\\
+                   zz zzz||||/////z||||||||||NNNNN||||\\\ \\
+                         ||||//////||||||||||NNNNN||||
+                          ||||||///||||||||||||||||||
+                                 NN|||||||||//
+                                 NN|||||||||//
 ```
 
 # AI usage disclosure
