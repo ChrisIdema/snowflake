@@ -1,7 +1,7 @@
 from math import atan2, degrees, radians, sin, cos
 import random  # random, choice, randint
 import time
-import sys
+import sys # for sys.argv
 
 
 # render preferences:
@@ -9,6 +9,8 @@ grid_width = 79 # has to be odd
 font_height_to_width = 32/14 # set this to your font ratio. (in vscode I used 32/14, but on "https://www.online-python.com/" I used 20/7)
 grid_height = int(((grid_width / font_height_to_width)//2)*2+1)
 max_length_sq = 0.9**2
+octant_array = "|/=\\|/=\\"
+hex_array = "|//z=\\\\N|/7z=\\\\N"
 
 
 # creates a tree with random branch posititions, angles and lengths, doesn't create mirrored branches
@@ -108,8 +110,9 @@ def is_in_node(node, point):
     return  x >= node["origin"][0] - node["w"] and x <= node["origin"][0] + node["w"] and \
             y <= node["origin"][1] and y >= node["origin"][1] - node["l"]
 
-# create a full random tree using a seed and returns all nodes
-def create_tree(seed=None):
+
+# create a full tree using a radom seed and returns all nodes
+def create_tree_nodes(seed=None):
     random.seed(seed)
     tree = create_half_tree(0, random.randint(1,3))
     mirror_tree(tree)
@@ -138,24 +141,20 @@ def render_flake_ascii(nodes):
                 pass 
             else:
                 segment_index = int(((angle_degrees + 30 + 360) %360)//60)
-                octant_index = round(((angle_degrees + 360) %360)/45)%8
-                octant_array = "|/=\\|/=\\"
-                octant_char = octant_array[octant_index] 
-
-                hex_array = "|//z=\\\\N|/7z=\\\\N"
+                # octant_index = round(((angle_degrees + 360) %360)/45)%8
+                # char = octant_array[octant_index] 
 
                 dx2,dy2 = rotate([0,0],[dx,dy],segment_index*-60)
                 for node in nodes:                
                     in_node = is_in_node(node,[dx2,dy2])
                     if in_node:
                         # octant_index = round(((node["angle"]+segment_index*60 + 360) %360)/45)%8
-                        # octant_char = octant_array[octant_index]                        
-                        # line[x] = octant_char
+                        # char = octant_array[octant_index]                        
 
-                        hex_index = round(((node["angle"]+segment_index*60 + 360) %360)/22.5)%16
-                        hex_char = hex_array[hex_index]                        
-                        line[x] = hex_char
+                        hex_index = round(((node["angle"]+segment_index*60 + 360) %360)/22.5)%16                        
+                        char = hex_array[hex_index]       
 
+                        line[x] = char
                         break
 
         flake += ''.join(line)
@@ -170,6 +169,6 @@ if __name__ == "__main__":
     if not seed:
         seed = int(time.time()*10)
     print(f"seed: {seed}")
-    nodes = create_tree(seed)
+    nodes = create_tree_nodes(seed)
     ascii_flake = render_flake_ascii(nodes)
     print(ascii_flake)
