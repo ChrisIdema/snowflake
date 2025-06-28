@@ -113,7 +113,9 @@ seed: 17511082569
 
 # svg output
 
-<img src="./17511082569.svg">
+`17511081380.svg`:
+
+<img src="./17511081380.svg" width="60%">
 
 # AI usage disclosure
 
