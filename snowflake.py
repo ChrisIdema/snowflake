@@ -71,7 +71,7 @@ def mirror_tree(node):
     node["children"] += mirror_children
 
 
-# extracts all individual nodes from a tree, convertes relative dimensions into absoulte dimensions
+# extracts all individual nodes from a tree, converts relative dimensions into absoulte dimensions
 def get_nodes(root, nodes=[],l=1,w=1, angle=0, origin=[0,0]):
     node = root.copy()
     node["children"] = []
