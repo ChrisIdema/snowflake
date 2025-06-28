@@ -116,6 +116,11 @@ No AI was used in code generation or assistance with writing code.
 ```
 python snowflake.py
 ```
+add an optional seed:
+```
+python snowflake.py 17511081380
+```
+
 Or test it out here: https://www.online-python.com/a2dPrnBHDF
 
 # Lessons learned
